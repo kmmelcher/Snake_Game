@@ -56,11 +56,13 @@ def pause():
 		pygame.display.update()
 		clock.tick(10)
 
+
 def score(score):
 	#Print the numbers of apples you've eaten, on the left-top corner
 	font = pygame.font.Font('PressStart2P-Regular.ttf',20)
 	text = font.render('Score: '+ str(score), True, colors.black)
 	game_display.blit(text, [0,0])
+
 
 def game_start_screen():
 
@@ -149,6 +151,30 @@ def message_to_screen(message,color,y_displace=0,font_size=20):
 	#Print the text in the screen
 	game_display.blit(text, text_rectangle)
 
+
+def game_over():
+
+	while True:
+
+		#Draw game over screen
+		message_to_screen("Game over",colors.red, -50, 50)
+		message_to_screen("Press C to play again or Q to quit",colors.black, 50, 20)
+		pygame.display.update()
+
+		#Player choices
+		for event in pygame.event.get():
+
+			if event.type == pygame.QUIT:
+				pygame.quit()
+				quit()
+			if event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_c:
+					#direction = 'right'
+					game_loop()
+				elif event.key == pygame.K_q:
+					pygame.quit()
+					quit()
+
 	
 def game_loop():
 
@@ -156,7 +182,6 @@ def game_loop():
 	global direction	
 
 	game_exit = False
-	game_over = False
 
 	#Coordinates from the front of the Snake Head
 	lead_x = display_width/2
@@ -179,30 +204,6 @@ def game_loop():
 	apple_x, apple_y = random_position_apple()
 
 	while not game_exit:
-
-		#game over loop
-		while game_over == True:
-
-			#Draw game over screen
-			message_to_screen("Game over",colors.red, -50, 50)
-			message_to_screen("Press C to play again or Q to quit",colors.black, 50, 20)
-			pygame.display.update()
-
-			#Player choices
-			for event in pygame.event.get():
-
-				if event.type == pygame.QUIT:
-					game_over = False
-					game_exit = True
-
-				if event.type == pygame.KEYDOWN:
-					if event.key == pygame.K_c:
-						direction = 'right'
-						game_loop()
-					elif event.key == pygame.K_q:
-						game_exit = True
-						game_over = False
-
 
 		#Player actions in the game
 		for event in pygame.event.get():
@@ -237,7 +238,8 @@ def game_loop():
 
 		#If the snake crosses the display boundaries, it dies
 		if lead_x >= display_width or lead_x < 0 or lead_y >= display_height or lead_y < 0 :
-			game_over = True
+			direction = 'right'
+			game_over()
 
 
 		#Adding the Pixels to the coordinates
@@ -259,7 +261,8 @@ def game_loop():
 		#If the Snake hits its own body, it dies
 		for each_segment in snake_list[:-1]:
 			if each_segment == snake_head:
-				game_over = True
+				direction = 'right'
+				game_over()
 				
 
 
