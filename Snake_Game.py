@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import pygame
 import colors
 import random
@@ -8,7 +10,7 @@ pygame.init()
 
 #set display size
 display_width = 800   
-display_height = 600  
+display_height = 600
 
 game_display = pygame.display.set_mode((display_width,display_height))
 
@@ -44,10 +46,10 @@ def pause():
 				quit()
 
 			if event.type == pygame.KEYDOWN:
-				if event.key == pygame.K_ESCAPE:
+				if event.key == pygame.K_v:
 					paused = False
 
-				elif event.key == pygame.K_q:
+				elif event.key == pygame.K_ESCAPE:
 					pygame.quit()
 					quit()
 
@@ -134,8 +136,8 @@ def apple(apple_x,apple_y,apple_thickness):
 
 def random_position_apple():
 	#Draw the apple in a random position, but avoid crossing-over the screen
-	apple_x = random.randrange(0,display_width-apple_thickness,apple_thickness)
-	apple_y = random.randrange(0,display_height-apple_thickness,apple_thickness)
+	apple_x = random.randrange(0,display_width-apple_thickness*2,apple_thickness)
+	apple_y = random.randrange(0,display_height-apple_thickness*2,apple_thickness)
 
 	return apple_x, apple_y
 
