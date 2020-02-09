@@ -46,10 +46,10 @@ def pause():
 				quit()
 
 			if event.type == pygame.KEYDOWN:
-				if event.key == pygame.K_v:
+				if event.key == pygame.K_ESCAPE:
 					paused = False
 
-				elif event.key == pygame.K_ESCAPE:
+				elif event.key == pygame.K_q:
 					pygame.quit()
 					quit()
 
@@ -136,8 +136,8 @@ def apple(apple_x,apple_y,apple_thickness):
 
 def random_position_apple():
 	#Draw the apple in a random position, but avoid crossing-over the screen
-	apple_x = random.randrange(0,display_width-apple_thickness*2,apple_thickness)
-	apple_y = random.randrange(0,display_height-apple_thickness*2,apple_thickness)
+	apple_x = random.randrange(0,display_width-apple_thickness,apple_thickness)
+	apple_y = random.randrange(0,display_height-apple_thickness,apple_thickness)
 
 	return apple_x, apple_y
 
