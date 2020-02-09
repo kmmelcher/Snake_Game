@@ -37,6 +37,10 @@ def pause():
 
 	paused = True
 
+	message_to_screen('Paused', colors.black, -100,50)
+	message_to_screen('Press ESC to continue or Q to quit', colors.black, 0,20)
+	pygame.display.update()
+
 	while paused:
 		
 		#Player choices
@@ -52,10 +56,7 @@ def pause():
 				elif event.key == pygame.K_q:
 					pygame.quit()
 					quit()
-
-		message_to_screen('Paused', colors.black, -100,50)
-		message_to_screen('Press ESC to continue or Q to quit', colors.black, 0,20)
-		pygame.display.update()
+	
 		clock.tick(10)
 
 
@@ -156,13 +157,13 @@ def message_to_screen(message,color,y_displace=0,font_size=20):
 
 def game_over():
 
+	#Draw game over screen
+	message_to_screen("Game over",colors.red, -50, 50)
+	message_to_screen("Press C to play again or Q to quit",colors.black, 50, 20)
+	pygame.display.update()
+
 	while True:
-
-		#Draw game over screen
-		message_to_screen("Game over",colors.red, -50, 50)
-		message_to_screen("Press C to play again or Q to quit",colors.black, 50, 20)
-		pygame.display.update()
-
+		
 		#Player choices
 		for event in pygame.event.get():
 
