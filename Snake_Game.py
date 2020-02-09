@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import pygame
 import colors
 import random
@@ -8,7 +10,7 @@ pygame.init()
 
 #set display size
 display_width = 800   
-display_height = 600  
+display_height = 600
 
 game_display = pygame.display.set_mode((display_width,display_height))
 

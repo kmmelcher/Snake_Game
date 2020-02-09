@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Snake Game
+Exec=/home/kilian/Documents/Computer_Science/Python/Games/Snake_Game/Snake_Game.py
+Icon=/home/kilian/Documents/Computer_Science/Python/Games/Snake_Game/Icon.png
+Type=Application
+Terminal=false
+Comment=
+Path=/home/kilian/Documents/Computer_Science/Python/Games/Snake_Game
+StartupNotify=false
+
+
