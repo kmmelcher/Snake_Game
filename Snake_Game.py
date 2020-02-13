@@ -67,9 +67,20 @@ def score(score):
 	game_display.blit(text, [0,0])
 
 
-def game_start_screen():
+def start_screen():
 
 	start = True
+
+	#Draw background image
+	game_display.blit(images.start_screen_background, [0,0])
+
+	#Draw start screen
+	#message_to_screen('Welcome to Snake Game',colors.green, -100,35)
+	message_to_screen('The objective of the game is to eat apples', colors.black, -30,15)
+	message_to_screen('The more apples you eat, the longer you get', colors.black, 0,15)
+	message_to_screen('If you run into yourself, or the edges, you die!', colors.black, 30,15)
+	message_to_screen('Press C to play, Q to quit or ESC to pause', colors.black, 120,15)
+	pygame.display.update()
 
 	while start:
 
@@ -87,15 +98,7 @@ def game_start_screen():
 					pygame.quit()
 					quit()
 
-		#Draw start screen
-		game_display.fill(colors.white)
-		message_to_screen('Welcome to Snake Game',colors.green, -100,35)
-		message_to_screen('The objective of the game is to eat apples', colors.black, -30,15)
-		message_to_screen('The more apples you eat, the longer you get', colors.black, 0,15)
-		message_to_screen('If you run into yourself, or the edges, you die!', colors.black, 30,15)
-		message_to_screen('Press C to play, Q to quit or ESC to pause', colors.black, 120,15)
-
-		pygame.display.update()
+		
 		#set the FPS to 10
 		clock.tick(10)
 
@@ -293,5 +296,5 @@ def game_loop():
 	pygame.quit()
 	quit()
 
-game_start_screen()
+start_screen()
 game_loop()
