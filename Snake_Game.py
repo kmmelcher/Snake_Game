@@ -27,8 +27,8 @@ clock = pygame.time.Clock()
 FPS = 15
 
 #thickness
-snake_thickness = 20
-apple_thickness = 20
+snake_thickness = 15
+apple_thickness = 15
 
 #snake movement direction
 direction = 'right'
