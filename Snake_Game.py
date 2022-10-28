@@ -24,7 +24,7 @@ pygame.display.set_icon(images.icon)
 clock = pygame.time.Clock()
 
 #Frames per second
-FPS = 20 
+FPS = 15
 
 #thickness
 snake_thickness = 20
